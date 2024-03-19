@@ -4,16 +4,17 @@ const serveur = http.createServer((req, res) => {
 
 //Définitio n de l'en-tête
 
-res.setHeader("content-type", "text/plain")
-
+res.setHeader("content-type", "text/html")
+//Définition de la réponse du client
+res.write('<head><meta charset="utf8"></head>')
     if (req.url === "/acceuil") {
-        res.write('Bienvenue')
+        res.write('<h1>Acceuil</h1><p>Bienvenue sur node.js</p>')
     }
     else if(req.url === "/profil"){
-        res.write('Vous êtes un developpeur node.js');
+        res.write('<h1>Profil</h1><p>Vous êtes un developpeur node.js</p>');
     }
     else {
-        res.write('Url non valide');
+        res.write('<h1>404 page indisponnible</h1><p>Url non valide</p>');
     }
     //Finalisation de la requète
     res.end()
