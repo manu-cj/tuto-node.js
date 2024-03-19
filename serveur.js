@@ -1,8 +1,9 @@
 const http = require('http');
-
-const fs = require('fs')
+const fs = require('fs');
+const uuid = require('uuid')
 
 const serveur = http.createServer((req, res) => {
+    console.log(uuid.v4());
 
 //Définition de l'en-tête
 
