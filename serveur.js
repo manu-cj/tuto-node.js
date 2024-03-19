@@ -1,23 +1,35 @@
 const http = require('http');
-const { url } = require('inspector');
+
+const fs = require('fs')
+
 const serveur = http.createServer((req, res) => {
 
-//Définitio n de l'en-tête
+//Définition de l'en-tête
 
 res.setHeader("content-type", "text/html")
 //Définition de la réponse du client
-res.write('<head><meta charset="utf8"></head>')
-    if (req.url === "/acceuil") {
-        res.write('<h1>Acceuil</h1><p>Bienvenue sur node.js</p>')
-    }
-    else if(req.url === "/profil"){
-        res.write('<h1>Profil</h1><p>Vous êtes un developpeur node.js</p>');
+let file = "";
+if (req.url === "/acceuil") {
+    file = "./views/acceuill.html";
+}
+else if(req.url === "/profil"){
+    file = "./views/profil.html";
+}
+else {
+    file = "./views/404.html";
+}
+//Lecture du fichier
+fs.readFile(file, (error, data) => {
+    if (error) {
+        console.log(error);
+        res.end()
     }
     else {
-        res.write('<h1>404 page indisponnible</h1><p>Url non valide</p>');
+        res.write(data);
+        res.end()
     }
-    //Finalisation de la requète
-    res.end()
+})
+
 }) 
 
 serveur.listen(8000, "localhost", () => {
