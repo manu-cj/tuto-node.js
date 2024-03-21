@@ -7,8 +7,6 @@ app.use(express.static("public"));
 
 app.use(morgan("tiny"));
 
-
-
 app.get('/acceuil', (req, res) => {
     res.status(200).sendFile("./views/acceuill.html", {root : __dirname});
 });
