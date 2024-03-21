@@ -5,7 +5,7 @@ const morgan = require("morgan")
 //Ressources statiques
 app.use(express.static("public"));
 
-//affiches le temps de réponses des requète dans le terminal
+//affiches le temps de réponses des requètes dans le terminal
 app.use(morgan("tiny"));
 
 
