@@ -35,7 +35,6 @@ fs.readFile('./routes/fichier1.txt', (error, data) => {
 })
 
 
-
 //Suppression d'un fichier
 
 if (fs.existsSync('./routes/fichier2.txt')) {
